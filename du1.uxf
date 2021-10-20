@@ -124,6 +124,8 @@ Hand
 --
 isActionCard(idx: int): bool
 play(idx: int): optional&lt;CardInterface&gt;
+draw(count: int): CardInterface[]
+discardCards(): CardInterface[]
 --
 Responsibilities
 -- Check if card is in hand
