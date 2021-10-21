@@ -4,4 +4,5 @@ from dataclasses import dataclass
 class TurnStatus:
     actions: int
     buys: int
+    cards: int
     coins: int
