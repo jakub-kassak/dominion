@@ -12,4 +12,17 @@ class PileInterface:
         raise NotImplementedError
 
 
+class PlayPile(PileInterface):
+    def __init__(self):
+        self._cards: List[CardInterface] = []
+
+    def put_into(self, cards: List[CardInterface]) -> None:
+        self._cards.extend(cards)
+
+    def get_all(self) -> List[CardInterface]:
+        cards: List[CardInterface] = self._cards
+        self._cards = []
+        return cards
+
+
 
