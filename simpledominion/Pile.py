@@ -25,4 +25,9 @@ class PlayPile(PileInterface):
         return cards
 
 
-
+class DiscardPile(PlayPile):
+    def get_all(self) -> List[CardInterface]:
+        cards: List[CardInterface] = self._cards
+        self._cards = []
+        shuffle(cards)
+        return cards
