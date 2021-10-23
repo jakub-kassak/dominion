@@ -13,7 +13,24 @@ class Phase(IntEnum):
     CLEAN_UP = 4
 
 
-class Turn:
+class TurnInterface:
+    def new_turn(self, status: TurnStatus, player: Player) -> bool:
+        raise NotImplementedError
+
+    def play_card(self, idx: int) -> bool:
+        raise NotImplementedError
+
+    def buy_card(self, buy_deck: BuyDeckInterface) -> bool:
+        raise NotImplementedError
+
+    def end_play_card_phase(self) -> bool:
+        raise NotImplementedError
+
+    def end_turn(self) -> bool:
+        raise NotImplementedError
+
+
+class Turn(TurnInterface):
     def __init__(self):
         self._status: Optional[TurnStatus] = None
         self._player: Optional[Player] = None
@@ -61,7 +78,7 @@ class Turn:
         if self._phase == Phase.BUY \
                 and self._status.coins >= buy_deck.card_type.cost \
                 and self._status.buys > 0:
-            card: CardInterface = buy_deck.buy()
+            card: Optional[CardInterface] = buy_deck.buy()
             if card:
                 self._status.buys -= 1
                 self._status.coins -= buy_deck.card_type.cost
