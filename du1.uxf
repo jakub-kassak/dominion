@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>10</zoom_level>
+  <zoom_level>11</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
+      <x>946</x>
       <y>0</y>
-      <w>330</w>
-      <h>110</h>
+      <w>363</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>bg=red
 &lt;&lt;Interface&gt;&gt;
@@ -24,10 +24,10 @@ endTurn(): optional&lt;GameState&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1140</x>
-      <y>40</y>
-      <w>230</w>
-      <h>210</h>
+      <x>1507</x>
+      <y>44</y>
+      <w>253</w>
+      <h>231</h>
     </coordinates>
     <panel_attributes>bg=red
 &lt;&lt;Datatype&gt;&gt;
@@ -48,10 +48,10 @@ turnNumber: int</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1450</x>
-      <y>90</y>
-      <w>140</w>
-      <h>110</h>
+      <x>1848</x>
+      <y>99</y>
+      <w>154</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>bg=red
 &lt;&lt;Datatype&gt;&gt;
@@ -65,10 +65,10 @@ cost: int</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1360</x>
-      <y>110</y>
-      <w>110</w>
-      <h>40</h>
+      <x>1749</x>
+      <y>121</y>
+      <w>121</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;</panel_attributes>
@@ -77,10 +77,10 @@ cost: int</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>950</x>
-      <y>60</y>
-      <w>210</w>
-      <h>40</h>
+      <x>1298</x>
+      <y>66</y>
+      <w>231</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;use&gt;&gt;</panel_attributes>
@@ -89,10 +89,10 @@ cost: int</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>130</y>
-      <w>330</w>
-      <h>60</h>
+      <x>946</x>
+      <y>143</y>
+      <w>363</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>SimpleDominion
 --
@@ -103,10 +103,10 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
-      <y>100</y>
-      <w>30</w>
-      <h>60</h>
+      <x>1100</x>
+      <y>110</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -114,18 +114,13 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1180</x>
-      <y>500</y>
-      <w>290</w>
-      <h>160</h>
+      <x>1254</x>
+      <y>1386</y>
+      <w>319</w>
+      <h>110</h>
     </coordinates>
-    <panel_attributes>bg=orange
+    <panel_attributes>bg=green
 Hand
---
-isActionCard(idx: int): bool
-play(idx: int): optional&lt;CardInterface&gt;
-draw(count: int): CardInterface[]
-discardCards(): CardInterface[]
 --
 Responsibilities
 -- Check if card is in hand
@@ -136,17 +131,16 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>120</x>
-      <y>530</y>
-      <w>240</w>
-      <h>110</h>
+      <x>385</x>
+      <y>1386</y>
+      <w>264</w>
+      <h>121</h>
     </coordinates>
-    <panel_attributes>bg=blue
+    <panel_attributes>bg=green
 BuyDeck
 --
-cardCount: int
---
-buy(): optional&lt;CardInterface&gt;
+card_count: int
+game_card_type: GameCardType
 --
 Responsibilities
 -- Creates cards</panel_attributes>
@@ -155,16 +149,13 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>520</y>
-      <w>260</w>
-      <h>130</h>
+      <x>979</x>
+      <y>1386</y>
+      <w>231</w>
+      <h>143</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 DiscardPile
---
-putInto(card: CardInterface)
-shulffleAndGetAll(): CardInterface[]
 --
 Responsibilities
 -- Has discard pile cards
@@ -174,10 +165,10 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>580</x>
-      <y>330</y>
-      <w>70</w>
-      <h>30</h>
+      <x>880</x>
+      <y>572</y>
+      <w>77</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
@@ -185,27 +176,27 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>440</x>
-      <y>320</y>
-      <w>150</w>
-      <h>70</h>
+      <x>726</x>
+      <y>561</y>
+      <w>165</w>
+      <h>77</h>
     </coordinates>
-    <panel_attributes>bg=blue
+    <panel_attributes>bg=green
 &lt;&lt;Interface&gt;&gt;
 EndGameStrategy
 --
-isGameOver(): bool</panel_attributes>
+is_game_over(): bool</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>200</x>
-      <y>330</y>
-      <w>160</w>
-      <h>30</h>
+      <x>462</x>
+      <y>572</y>
+      <w>176</w>
+      <h>33</h>
     </coordinates>
-    <panel_attributes>bg=blue
+    <panel_attributes>bg=green
 AtLeastNEmptyDecks
 </panel_attributes>
     <additional_attributes/>
@@ -213,10 +204,10 @@ AtLeastNEmptyDecks
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>350</x>
-      <y>340</y>
-      <w>110</w>
-      <h>30</h>
+      <x>627</x>
+      <y>583</y>
+      <w>121</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
@@ -224,22 +215,22 @@ AtLeastNEmptyDecks
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>430</x>
-      <y>230</y>
-      <w>170</w>
-      <h>50</h>
+      <x>715</x>
+      <y>484</y>
+      <w>187</w>
+      <h>33</h>
     </coordinates>
-    <panel_attributes>bg=blue
-EndGameStrategyAnd</panel_attributes>
+    <panel_attributes>bg=green
+EndGameStrategyOr</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>460</x>
-      <y>270</y>
-      <w>30</w>
-      <h>70</h>
+      <x>748</x>
+      <y>506</y>
+      <w>33</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
@@ -247,10 +238,10 @@ EndGameStrategyAnd</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>270</y>
-      <w>30</w>
-      <h>70</h>
+      <x>836</x>
+      <y>506</y>
+      <w>33</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=*</panel_attributes>
@@ -259,10 +250,10 @@ m1=*</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>0</x>
-      <y>330</y>
-      <w>160</w>
-      <h>80</h>
+      <x>242</x>
+      <y>572</y>
+      <w>176</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>This covers both
 3 empty decks rule
@@ -273,49 +264,24 @@ rule</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>330</x>
-      <y>430</y>
-      <w>320</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;
-m2=*</panel_attributes>
-    <additional_attributes>300.0;10.0;10.0;10.0;10.0;100.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>950</x>
-      <y>440</y>
-      <w>360</w>
-      <h>80</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;
-
-m2=1</panel_attributes>
-    <additional_attributes>10.0;20.0;330.0;20.0;330.0;60.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>270</x>
-      <y>350</y>
-      <w>30</w>
-      <h>200</h>
+      <x>539</x>
+      <y>594</y>
+      <w>33</w>
+      <h>605</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=*</panel_attributes>
-    <additional_attributes>10.0;180.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;530.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>810</x>
-      <y>970</y>
-      <w>150</w>
-      <h>210</h>
+      <x>1133</x>
+      <y>1914</y>
+      <w>165</w>
+      <h>231</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 &lt;&lt;datatype&gt;&gt;
 GameCardType
 {radonly}
@@ -334,12 +300,12 @@ isActionCard: bool</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1170</x>
-      <y>300</y>
-      <w>140</w>
-      <h>100</h>
+      <x>1529</x>
+      <y>539</y>
+      <w>154</w>
+      <h>110</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 TurnStatus
 --
 actions: int
@@ -351,12 +317,13 @@ gold: int</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>910</x>
-      <y>530</y>
-      <w>240</w>
-      <h>120</h>
+      <x>1617</x>
+      <y>1386</y>
+      <w>264</w>
+      <h>143</h>
     </coordinates>
-    <panel_attributes>Deck
+    <panel_attributes>bg=green
+Deck
 --
 draw(count: int): CardInterface[]
 --
@@ -364,43 +331,29 @@ Responsibilities
 -- Contains deck cards
 -- Get cards from top
 -- Knows when to shuffle
-bg=orange</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>880</x>
-      <y>560</y>
-      <w>50</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-
-
-1</panel_attributes>
-    <additional_attributes>10.0;20.0;30.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>950</x>
-      <y>390</y>
-      <w>270</w>
-      <h>60</h>
+      <x>1430</x>
+      <y>605</y>
+      <w>121</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
 m2=1</panel_attributes>
-    <additional_attributes>10.0;40.0;240.0;40.0;240.0;10.0</additional_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0;90.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>950</x>
-      <y>300</y>
-      <w>240</w>
-      <h>50</h>
+      <x>1287</x>
+      <y>539</y>
+      <w>264</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m2=1
@@ -410,40 +363,42 @@ new turn status &gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>410</y>
-      <w>330</w>
-      <h>80</h>
+      <x>1100</x>
+      <y>704</y>
+      <w>363</w>
+      <h>132</h>
     </coordinates>
-    <panel_attributes>bg=blue
-Turn
+    <panel_attributes>bg=green
+&lt;&lt;Interface&gt;&gt;
+TurnInterface
 --
-Responsibilities
--- Tracks actions / buys / gold
--- Throws used cards into Play or DiscardPile
+new_turn(status: TurnStatus, player: Player): bool
+play_card(idx: int): bool
+buy_card(decks: Dict[BuyDeck], name: string): bool
+next_phase(): bool
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
-      <y>180</y>
-      <w>40</w>
-      <h>70</h>
+      <x>1100</x>
+      <y>198</y>
+      <w>44</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 </panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>880</x>
-      <y>920</y>
-      <w>40</w>
-      <h>70</h>
+      <x>1210</x>
+      <y>1859</y>
+      <w>44</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1</panel_attributes>
@@ -452,36 +407,23 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>930</x>
-      <y>650</y>
-      <w>370</w>
-      <h>40</h>
+      <x>1375</x>
+      <y>1518</y>
+      <w>385</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;20.0;350.0;20.0;350.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1140</x>
-      <y>560</y>
-      <w>60</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-
-1</panel_attributes>
-    <additional_attributes>10.0;20.0;40.0;20.0</additional_attributes>
+    <additional_attributes>10.0;60.0;330.0;60.0;330.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>770</x>
-      <y>860</y>
-      <w>240</w>
-      <h>70</h>
+      <x>1089</x>
+      <y>1793</y>
+      <w>264</w>
+      <h>77</h>
     </coordinates>
-    <panel_attributes>bg=orange
+    <panel_attributes>bg=green
 GameCard
 --
 Responsibilities
@@ -491,21 +433,21 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1000</x>
-      <y>310</y>
-      <w>520</w>
-      <h>620</h>
+      <x>1342</x>
+      <y>550</y>
+      <w>682</w>
+      <h>1320</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>310.0;10.0;500.0;10.0;500.0;600.0;10.0;600.0</additional_attributes>
+    <additional_attributes>310.0;10.0;600.0;10.0;600.0;1180.0;10.0;1180.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>210</x>
-      <y>30</y>
-      <w>390</w>
-      <h>190</h>
+      <x>473</x>
+      <y>242</y>
+      <w>429</w>
+      <h>209</h>
     </coordinates>
     <panel_attributes>Red classes are implemented. You should implement blue classes. You can ignore methods necessary to produce GameState response
 
@@ -520,44 +462,42 @@ Hand
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>270</x>
-      <y>630</y>
-      <w>520</w>
-      <h>300</h>
+      <x>539</x>
+      <y>1496</y>
+      <w>572</w>
+      <h>374</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 &lt;&lt;creates&gt;&gt;</panel_attributes>
-    <additional_attributes>500.0;280.0;10.0;280.0;10.0;10.0</additional_attributes>
+    <additional_attributes>500.0;320.0;10.0;320.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>880</x>
-      <y>640</y>
-      <w>80</w>
-      <h>90</h>
+      <x>1210</x>
+      <y>1485</y>
+      <w>198</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 
 
 &lt;&lt;use&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;30.0;60.0;30.0;60.0;10.0</additional_attributes>
+    <additional_attributes>10.0;130.0;10.0;90.0;160.0;90.0;160.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>630</x>
-      <y>230</y>
-      <w>330</w>
-      <h>150</h>
+      <x>935</x>
+      <y>484</y>
+      <w>363</w>
+      <h>143</h>
     </coordinates>
-    <panel_attributes>bg=blue
+    <panel_attributes>bg=green
 Game
 --
-playCard(handIdx: int): bool
-endPlayCardPhase(): bool
-buyCard(buyCardIdx): bool
-endTurn(): bool
+buy_decks: [List[BuyDeck]
+player: Player
 --
 Responsibilities
 -- Manages turns
@@ -568,29 +508,25 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
-      <y>370</y>
-      <w>40</w>
-      <h>60</h>
+      <x>1210</x>
+      <y>616</y>
+      <w>77</w>
+      <h>110</h>
     </coordinates>
-    <panel_attributes>lt=-&gt;
-
-m2=1</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;use&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>420</x>
-      <y>520</y>
-      <w>200</w>
-      <h>130</h>
+      <x>704</x>
+      <y>1386</y>
+      <w>220</w>
+      <h>143</h>
     </coordinates>
-    <panel_attributes>bg=orange
-Play
---
-putTo(card: CardInterface)
-throwAll(): CardInterface[]
+    <panel_attributes>bg=green
+PlayPile
 --
 Responsibilities
 -- Stores cards in play
@@ -602,87 +538,52 @@ pile at the end of turn
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>510</x>
-      <y>470</y>
-      <w>140</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0;120.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>750</x>
-      <y>480</y>
-      <w>30</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>520</x>
-      <y>640</y>
-      <w>260</w>
-      <h>50</h>
+      <x>814</x>
+      <y>1518</y>
+      <w>308</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=.
 </panel_attributes>
-    <additional_attributes>240.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
+    <additional_attributes>260.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>950</x>
-      <y>460</y>
-      <w>100</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;
-
-m2=1</panel_attributes>
-    <additional_attributes>10.0;20.0;70.0;20.0;70.0;70.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>750</x>
-      <y>640</y>
-      <w>160</w>
-      <h>50</h>
+      <x>1089</x>
+      <y>1518</y>
+      <w>154</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>140.0;30.0;10.0;30.0;10.0;10.0</additional_attributes>
+    <additional_attributes>120.0;60.0;10.0;60.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>760</x>
-      <y>710</y>
-      <w>280</w>
-      <h>120</h>
+      <x>1078</x>
+      <y>1628</y>
+      <w>308</w>
+      <h>132</h>
     </coordinates>
-    <panel_attributes>bg=red
+    <panel_attributes>bg=green
 &lt;&lt;Interface&gt;&gt;
 CardInterface
 --
 cardType: GameCardType
 --
-evaluate(TurnStatus&amp;): pair&lt;int&gt;
-    {returns number of cards to draw}
-getCardType(): GameCardType</panel_attributes>
+evaluate(TurnStatus&amp;)
+getCardType(): GameCardType
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>880</x>
-      <y>820</y>
-      <w>30</w>
-      <h>60</h>
+      <x>1210</x>
+      <y>1749</y>
+      <w>33</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
@@ -690,23 +591,404 @@ getCardType(): GameCardType</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>380</x>
-      <y>450</y>
-      <w>270</w>
-      <h>240</h>
+      <x>407</x>
+      <y>583</y>
+      <w>77</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>150.0;220.0;10.0;220.0;10.0;10.0;250.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>759</x>
+      <y>715</y>
+      <w>187</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Datatype&gt;&gt;
+Player
+--
+play: Play
+discard_pile: DiscardPile
+deck: Deck
+hand: Hand</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>150</x>
-      <y>340</y>
-      <w>70</w>
-      <h>30</h>
+      <x>935</x>
+      <y>759</y>
+      <w>187</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+
+&lt;&lt;use&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>935</x>
+      <y>616</y>
+      <w>110</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;80.0;110.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1452</x>
+      <y>770</y>
+      <w>462</w>
+      <h>836</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;400.0;10.0;400.0;740.0;260.0;740.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>572</x>
+      <y>616</y>
+      <w>429</w>
+      <h>583</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=*</panel_attributes>
+    <additional_attributes>370.0;10.0;370.0;40.0;10.0;40.0;10.0;510.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>286</x>
+      <y>275</y>
+      <w>176</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>bg=blue
+To-Do</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>286</x>
+      <y>308</y>
+      <w>176</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>bg=green
+Finnished</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>286</x>
+      <y>341</y>
+      <w>176</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>bg=red
+Implemented by Lukotka</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>792</x>
+      <y>1177</y>
+      <w>220</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Interface&gt;&gt;
+PileInterface
+--
+putInto(cards: CardInterface[])
+getAll(): CardInterface[]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>836</x>
+      <y>1265</y>
+      <w>33</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>803</x>
+      <y>836</y>
+      <w>33</w>
+      <h>363</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>836</x>
+      <y>836</y>
+      <w>33</w>
+      <h>363</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>869</x>
+      <y>836</y>
+      <w>550</w>
+      <h>352</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;240.0;480.0;240.0;480.0;300.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>385</x>
+      <y>1177</y>
+      <w>264</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Interface&gt;&gt;
+BuyDeckInterface
+--
+buy(): optional&lt;CardInterface&gt;
+is_empty(): bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>539</x>
+      <y>1254</y>
+      <w>33</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1254</x>
+      <y>1166</y>
+      <w>319</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Interface&gt;&gt;
+HandInterface
+--
+is_treasure_card(idx: int): bool
+is_action_card(idx: int): bool
+play(idx: int): optional&lt;CardInterface&gt;
+draw(count: int): 
+discard(): CardInterface[]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1397</x>
+      <y>1298</y>
+      <w>33</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1639</x>
+      <y>1210</y>
+      <w>231</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Interface&gt;&gt;
+DeckInterface
+--
+draw(count: int): CardInterface[]
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1738</x>
+      <y>1276</y>
+      <w>33</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1562</x>
+      <y>1232</y>
+      <w>99</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+
+&lt;&lt;use&gt;&gt;</panel_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>616</x>
+      <y>825</y>
+      <w>506</w>
+      <h>374</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;use&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;320.0;10.0;280.0;440.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>913</x>
+      <y>1452</y>
+      <w>88</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1100</x>
+      <y>902</y>
+      <w>363</w>
+      <h>121</h>
+    </coordinates>
+    <panel_attributes>bg=green
+Turn
+--
+Responsibilities
+-- Tracks actions / buys / gold
+-- Throws used cards into Play or DiscardPile
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1265</x>
+      <y>825</y>
+      <w>33</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1551</x>
+      <y>891</y>
+      <w>176</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;IntEnum&gt;&gt;
+Phase
+--
+- ACTION = 1
+- BUY_TREASURE = 2
+- BUY = 3
+- CLEAN_UP = 4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1452</x>
+      <y>957</y>
+      <w>121</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>286</x>
+      <y>374</y>
+      <w>176</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>bg=orange
+Partially implemented</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1529</x>
+      <y>1276</y>
+      <w>154</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>120.0;10.0;120.0;60.0;10.0;60.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>935</x>
+      <y>275</y>
+      <w>363</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>bg=green
+&lt;&lt;Interface&gt;&gt;
+GameInterface
+--
+play_card(idx: int): bool
+end_play_card_phase(): bool
+buy_card(idx: int): bool
+end_turn(): bool
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1100</x>
+      <y>407</y>
+      <w>33</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
 </diagram>
