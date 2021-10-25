@@ -6,9 +6,7 @@ from simpledominion.EndGameStrategy import EndGameStrategy, NEmptyDecks
 
 class TestNEmptyDecks(TestCase):
     def setUp(self) -> None:
-        self.decks: List[Mock] = []
-        for i in range(10):
-            self.decks.append(Mock())
+        self.decks: List[Mock] = [Mock() for _ in range(10)]
         self.strategy1: EndGameStrategy = NEmptyDecks(self.decks, 3)
         self.strategy2: EndGameStrategy = NEmptyDecks(self.decks[:1], 1)
         self.strategy3: EndGameStrategy = NEmptyDecks([], 1)
@@ -24,6 +22,8 @@ class TestNEmptyDecks(TestCase):
         self.assertTrue(self.strategy2.is_game_over())
 
         self.decks[1].is_empty.return_value = True
+        self.assertFalse(self.strategy1.is_game_over())
+
         self.decks[2].is_empty.return_value = True
         self.assertTrue(self.strategy1.is_game_over())
 
