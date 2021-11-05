@@ -18,7 +18,7 @@ class TurnInterface:
     def buy_card(self, buy_deck: BuyDeckInterface) -> bool:
         raise NotImplementedError
 
-    def end_turn(self) -> None:
+    def end_turn(self) -> int:
         raise NotImplementedError
 
 
