@@ -1,0 +1,11 @@
+reviewoval: Andrej Ravinger
+posledný commit: SimpleDominion fix, 5.11 17:31
+GameCardType.py - Province - nesprávny výpis : +3 Point namiesto +6.
+test_play_pile.py  - premenná sa volá shuffled_cards aj keď sa karty neshufflujú.
+Viaceré testy - assertEqual(True, ...) môže byť nahradené assertTrue(...), podobne assertFalse(...), assertIsNone.
+test_deck.py - assert_has_same_cards sa nevyužije.
+Game.py - evaluate_points sa nevyužije, podobne v teste.
+SimpleDominion.py a Main.py nie sú testované, neviem, či to treba.
+Main.py - v prvom ťahu vypíše incorrect move po print alebo aj pri incorrect move.
+Main.py - zišiel by sa nejaký úvodný text alebo nejaký help príkaz aby mohol hráč hrať bez toho aby sa pozrel do kódu.
+Ostatné je podľa mňa OK.
