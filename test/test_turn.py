@@ -84,7 +84,7 @@ class TestTurn(TestCase):
     def assert_buy_card(self, actions: int = 0, buys: int = 0, cards: int = 0, coins: int = 0,
                         b_deck_size: int = 0, result: bool = False):
         self.set_status(actions, buys, cards, coins)
-        c_type: GameCardType = GameCardType(0, 0, 0, 0, 0, 2, False, False, "null", "name")
+        c_type: GameCardType = GameCardType(0, 0, 0, 0, 1, 2, False, False, "null", "name")
         buy_deck: BuyDeck = BuyDeck(c_type, b_deck_size)
         self.player.discard_pile.get_all()
         self.assertEqual(result, self.turn.buy_card(buy_deck))
@@ -101,8 +101,14 @@ class TestTurn(TestCase):
         self.assert_buy_card(buys=1, coins=1, b_deck_size=1, result=False)
         self.assert_buy_card(buys=1, coins=2, b_deck_size=0, result=False)
 
-    def test_end_turn(self):
+    def assert_end_turn(self, n: int = 0):
         self.assert_new_turn_true()
-        self.turn.end_turn()
+        for _ in range(n):
+            self.assert_buy_card(buys=1, coins=2, b_deck_size=1, result=True)
+        self.assertEqual(n, self.turn.end_turn())
         self.assertEqual(0, len(self.player.play_pile.get_all()))
         self.assertEqual(0, len(self.player.hand.get_all()))
+
+    def test_end_turn(self):
+        self.assert_end_turn(0)
+        self.assert_end_turn(3)

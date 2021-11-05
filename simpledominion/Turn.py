@@ -27,10 +27,12 @@ class Turn(TurnInterface):
         self._status = status
         self._player = player
         self._player.hand.draw(status.cards)
+        self._points: int = 0
         status.cards = 0
 
-    def end_turn(self) -> None:
+    def end_turn(self) -> int:
         self._player.discard_pile.put_into(self._player.play_pile.get_all() + self._player.hand.get_all())
+        return self._points
 
     def play_card(self, idx: int) -> bool:
         if self._status.actions > 0 and self._player.hand.is_action_card(idx) \
@@ -51,6 +53,7 @@ class Turn(TurnInterface):
             if card:
                 self._status.buys -= 1
                 self._status.coins -= buy_deck.card_type.cost
+                self._points += card.cardType.points
                 self._player.discard_pile.put_into([card])
                 return True
         return False
