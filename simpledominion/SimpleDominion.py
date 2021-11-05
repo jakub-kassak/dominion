@@ -1,4 +1,4 @@
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, Dict
 
 from simpledominion.BuyDeck import BuyDeck, BuyDeckInterface
 from simpledominion.Deck import Deck, DeckInterface
@@ -21,11 +21,24 @@ class SimpleDominion(SimpleDominionInterface):
         return Player(self._play_pile, self._discard_pile, self._hand)
 
     @staticmethod
-    def create_decks() -> List[BuyDeck]:
-        return [BuyDeck(x, 8) for x in [GAME_CARD_TYPE_PROVINCE, GAME_CARD_TYPE_ESTATE, GAME_CARD_TYPE_DUCHY]] \
-               + [BuyDeck(x, 20) for x in [GAME_CARD_TYPE_COPPER, GAME_CARD_TYPE_SILVER, GAME_CARD_TYPE_GOLD]] \
-               + [BuyDeck(x, 10) for x in [GAME_CARD_TYPE_SMITHY, GAME_CARD_TYPE_VILLAGE, GAME_CARD_TYPE_FESTIVAL,
-                                           GAME_CARD_TYPE_LABORATORY, GAME_CARD_TYPE_MARKET]]
+    def create_buy_decks() -> List[BuyDeckInterface]:
+        buy_decks: List[BuyDeckInterface] = []
+        decks: Dict[GameCardType, int] = {
+            GAME_CARD_TYPE_PROVINCE: 8,
+            GAME_CARD_TYPE_ESTATE: 8,
+            GAME_CARD_TYPE_DUCHY: 8,
+            GAME_CARD_TYPE_COPPER: 20,
+            GAME_CARD_TYPE_SILVER: 20,
+            GAME_CARD_TYPE_GOLD: 20,
+            GAME_CARD_TYPE_SMITHY: 20,
+            GAME_CARD_TYPE_VILLAGE: 20,
+            GAME_CARD_TYPE_FESTIVAL: 20,
+            GAME_CARD_TYPE_LABORATORY: 20,
+            GAME_CARD_TYPE_MARKET: 20
+        }
+        for c_type, amount in decks.items():
+            buy_decks.append(BuyDeck(c_type, amount))
+        return buy_decks
 
     def __init__(self) -> None:
         self._play_pile: PileInterface = PlayPile()
@@ -33,7 +46,7 @@ class SimpleDominion(SimpleDominionInterface):
         self._deck: DeckInterface = Deck(self._discard_pile)
         self._hand: HandInterface = Hand(self._deck)
         self._player: Player = self.create_player()
-        self.buy_decks: List[BuyDeckInterface] = self.create_decks()
+        self.buy_decks: List[BuyDeckInterface] = self.create_buy_decks()
         end_strategy: EndGameStrategy = EndGameStrategyOr(
             NEmptyDecks(self.buy_decks[0:1], 1),
             NEmptyDecks(self.buy_decks[6:], 3)
@@ -53,7 +66,7 @@ class SimpleDominion(SimpleDominionInterface):
         if c:
             discardPileTop: Optional[Card] = Card(c.cardType.name, c.cardType.description, c.cardType.cost)
         else:
-            discardPileTop: Optional[Card] = None
+            discardPileTop = None
         points: int = self._game.points
         turn: int = self._game.turn_number
         status: TurnStatus = self._game.turn_status
