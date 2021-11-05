@@ -13,7 +13,7 @@ class NEmptyDecks(EndGameStrategy):
         self._n = n
 
     def is_game_over(self) -> bool:
-        count = 0
+        count: int = 0
         for deck in self._decks:
             count += deck.is_empty()
         return count >= self._n
