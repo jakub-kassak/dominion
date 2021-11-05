@@ -5,18 +5,18 @@ from simpledominion.TurnStatus import TurnStatus
 from typing import Optional
 
 
-class TurnInterface:
-    # def new_turn(self, status: TurnStatus, player: Player) -> bool:
-    #     raise NotImplementedError
+class TurnFactory:
+    @staticmethod
+    def new(status: TurnStatus, player: Player):
+        return Turn(status, player)
 
+
+class TurnInterface:
     def play_card(self, idx: int) -> bool:
         raise NotImplementedError
 
     def buy_card(self, buy_deck: BuyDeckInterface) -> bool:
         raise NotImplementedError
-
-    # def end_play_card_phase(self) -> bool:
-    #     raise NotImplementedError
 
     def end_turn(self) -> None:
         raise NotImplementedError
@@ -29,24 +29,8 @@ class Turn(TurnInterface):
         self._player.hand.draw(status.cards)
         status.cards = 0
 
-    # def end_play_card_phase(self) -> bool:
-    #     if self._phase > Phase.BUY:
-    #         return False
-    #     self._phase = Phase.BUY
-    #     return True
-
     def end_turn(self) -> None:
         self._player.discard_pile.put_into(self._player.play_pile.get_all() + self._player.hand.get_all())
-
-    # def new_turn(self, status: TurnStatus, player: Player) -> bool:
-    #     if self._phase == Phase.CLEAN_UP:
-    #         self._status = status
-    #         self._player = player
-    #         self._phase = Phase.ACTION
-    #         self._player.hand.draw(status.cards)
-    #         status.cards = 0
-    #         return True
-    #     return False
 
     def play_card(self, idx: int) -> bool:
         if self._status.actions > 0 and self._player.hand.is_action_card(idx) \
