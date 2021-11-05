@@ -3,14 +3,6 @@ from simpledominion.BuyDeck import BuyDeckInterface
 from simpledominion.CardInterface import CardInterface
 from simpledominion.TurnStatus import TurnStatus
 from typing import Optional
-from enum import IntEnum
-
-
-class Phase(IntEnum):
-    ACTION = 1
-    BUY_TREASURE = 2
-    BUY = 3
-    CLEAN_UP = 4
 
 
 class TurnInterface:
