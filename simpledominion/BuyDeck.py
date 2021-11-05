@@ -15,6 +15,10 @@ class BuyDeckInterface:
     def card_type(self) -> GameCardType:
         raise NotImplementedError
 
+    @property
+    def size(self):
+        raise NotImplementedError
+
 
 class BuyDeck(BuyDeckInterface):
 
@@ -27,7 +31,7 @@ class BuyDeck(BuyDeckInterface):
         return self._card_type
 
     @property
-    def card_count(self):
+    def size(self):
         return self._card_count
 
     def is_empty(self) -> bool:

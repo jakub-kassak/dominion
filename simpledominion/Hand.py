@@ -19,6 +19,10 @@ class HandInterface:
     def get_all(self) -> List[CardInterface]:
         raise NotImplementedError
 
+    @property
+    def cards(self) -> List[CardInterface]:
+        raise NotImplementedError
+
 
 class Hand(HandInterface):
     def __init__(self, deck: DeckInterface):
