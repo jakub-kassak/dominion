@@ -1,13 +1,13 @@
 from typing import List
 from unittest import TestCase
 
-from simpledominion.BuyDeck import BuyDeck, BuyDeckInterface
+from simpledominion.BuyDeck import BuyDeck
 from simpledominion.CardInterface import CardInterface
-from simpledominion.Deck import Deck
+from simpledominion.Deck import Deck, DeckInterface
 from simpledominion.GameCard import GameCard
 from simpledominion.GameCardType import GameCardType
-from simpledominion.Hand import Hand
-from simpledominion.Pile import PlayPile
+from simpledominion.Hand import Hand, HandInterface
+from simpledominion.Pile import PlayPile, PileInterface
 from simpledominion.Player import Player
 from simpledominion.Turn import TurnInterface, Turn
 from simpledominion.TurnStatus import TurnStatus
@@ -15,16 +15,17 @@ from simpledominion.TurnStatus import TurnStatus
 
 class TestTurn(TestCase):
     def setUp(self) -> None:
-        self.status = TurnStatus(actions=1, buys=1, coins=0, cards=5)
-        self.turn: TurnInterface = Turn()
-        self.set_up_player()
+        self.status: TurnStatus = TurnStatus(actions=1, buys=1, coins=0, cards=5)
+        self.player: Player = self.set_up_player()
+        self.turn: TurnInterface = Turn(self.status, self.player)
 
-    def set_up_player(self) -> None:
-        play_pile = PlayPile()
-        discard_pile = PlayPile()
-        deck = Deck(discard_pile)
-        hand = Hand(deck)
-        self.player = Player(play_pile, discard_pile, hand)
+    @staticmethod
+    def set_up_player() -> Player:
+        play_pile: PileInterface = PlayPile()
+        discard_pile: PileInterface = PlayPile()
+        deck: DeckInterface = Deck(discard_pile)
+        hand: HandInterface = Hand(deck)
+        return Player(play_pile, discard_pile, hand)
 
     def set_status(self, actions: int = 0, buys: int = 0, cards: int = 0, coins: int = 0):
         self.status.actions = actions
@@ -50,15 +51,12 @@ class TestTurn(TestCase):
     def assert_new_turn_true(self, actions: int = 0, buys: int = 0, cards: int = 0, coins: int = 0):
         self.set_status(actions, buys, cards, coins)
         self.set_discard_pile()
-        self.assertTrue(self.turn.new_turn(self.status, self.player))
-        self.assert_status(actions, buys, 0, coins)
+        self.turn = Turn(self.status, self.player)
+        self.assert_status(cards=0)
 
     def test_new_turn(self):
         self.assert_new_turn_true(cards=5)
         self.assertEqual(5, len(self.player.hand.get_all()))
-        self.assertFalse(self.turn.new_turn(self.status, self.player))
-        self.assertTrue(self.turn.end_play_card_phase())
-        self.assertTrue(self.turn.end_turn())
         self.assert_new_turn_true(cards=1)
         self.assertEqual(1, len(self.player.hand.get_all()))
 
@@ -77,14 +75,11 @@ class TestTurn(TestCase):
 
     def test_play_card(self):
         self.assert_new_turn_true(cards=5)
-        self.assert_play_card(idx=-1)
-        self.assert_play_card(idx=5)
-        self.assert_play_card(idx=0, actions=1, buys=1, result=True, is_action=True)
+        self.assert_play_card(idx=-1, result=False)
+        self.assert_play_card(idx=5, result=False)
+        self.assert_play_card(idx=2, result=True, is_treasure=True)
+        self.assert_play_card(idx=1, actions=1, result=True, is_action=True)
         self.assert_play_card(idx=0, actions=0, result=False, is_action=True)
-        self.assert_play_card(idx=1, result=True, is_treasure=True)
-        self.assert_play_card(idx=0, actions=1, result=False, is_action=True)
-        self.assertTrue(self.turn.end_play_card_phase())
-        self.assert_play_card(idx=1, result=False, is_treasure=True)
 
     def assert_buy_card(self, actions: int = 0, buys: int = 0, cards: int = 0, coins: int = 0,
                         b_deck_size: int = 0, result: bool = False):
@@ -101,28 +96,13 @@ class TestTurn(TestCase):
 
     def test_buy_card(self):
         self.assert_new_turn_true()
-        self.assert_buy_card(buys=1, coins=2, b_deck_size=1, result=False)
-        self.assertTrue(self.turn.end_play_card_phase())
         self.assert_buy_card(buys=1, coins=2, b_deck_size=1, result=True)
         self.assert_buy_card(buys=0, coins=2, b_deck_size=1, result=False)
         self.assert_buy_card(buys=1, coins=1, b_deck_size=1, result=False)
         self.assert_buy_card(buys=1, coins=2, b_deck_size=0, result=False)
 
-    def test_end_play_card_phase(self):
-        self.assertFalse(self.turn.end_play_card_phase())
-        self.assert_new_turn_true(cards=2)
-        self.assertTrue(self.turn.end_play_card_phase())
-        self.assert_play_card(actions=1, result=False, is_action=True)
-        self.assert_buy_card(buys=1, coins=2, b_deck_size=1, result=True)
-        self.assertTrue(self.turn.end_play_card_phase())
-        self.assertTrue(self.turn.end_turn())
-        self.assertFalse(self.turn.end_play_card_phase())
-
     def test_end_turn(self):
-        self.assertFalse(self.turn.end_turn())
         self.assert_new_turn_true()
-        self.assertTrue(self.turn.end_turn())
-        self.assert_new_turn_true()
-        self.assertTrue(self.turn.end_play_card_phase())
-        self.assertTrue(self.turn.end_turn())
-        self.assert_buy_card(buys=1, coins=2, b_deck_size=1, result=False)
+        self.turn.end_turn()
+        self.assertEqual(0, len(self.player.play_pile.get_all()))
+        self.assertEqual(0, len(self.player.hand.get_all()))
