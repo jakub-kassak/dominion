@@ -4,7 +4,7 @@ from simpledominion.BuyDeck import BuyDeckInterface
 from simpledominion.CardInterface import CardInterface
 from simpledominion.EndGameStrategy import EndGameStrategy
 from simpledominion.Player import Player
-from simpledominion.Turn import Turn, TurnInterface
+from simpledominion.Turn import TurnInterface, TurnFactory
 from simpledominion.TurnStatus import TurnStatus
 from enum import IntEnum
 
@@ -36,9 +36,10 @@ class GameInterface:
 
 
 class Game(GameInterface):
-    def __init__(self, player: Player, buy_decks: List[BuyDeckInterface], end_strategy: EndGameStrategy) -> None:
+    def __init__(self, player: Player, buy_decks: List[BuyDeckInterface], turn_factory: TurnFactory, end_strategy: EndGameStrategy) -> None:
         self._player: Player = player
-        self._turn: TurnInterface = Turn(TurnStatus(1, 1, 5, 0), player)
+        self._factory: TurnFactory = turn_factory
+        self._turn: TurnInterface = self._factory.new(TurnStatus(1, 1, 5, 0), self._player)
         self._buy_decks: List[BuyDeckInterface] = buy_decks
         self._end_strategy: EndGameStrategy = end_strategy
         self._turn_number: int = 1
@@ -65,10 +66,8 @@ class Game(GameInterface):
         return False
 
     def end_play_card_phase(self) -> bool:
-        if self._phase <= Phase.BUY:
-            self._phase = Phase.BUY
-            return True
-        return False
+        self._phase = Phase.BUY
+        return True
 
     def buy_card(self, idx: int) -> bool:
         if self._phase == Phase.BUY:
@@ -80,7 +79,7 @@ class Game(GameInterface):
             return False
         self._phase = Phase.ACTION
         self._turn.end_turn()
-        self._turn = Turn(TurnStatus(1, 1, 5, 0), self._player)
+        self._turn = self._factory.new(TurnStatus(1, 1, 5, 0), self._player)
         self._is_game_over = self._end_strategy.is_game_over()
         self._turn_number += int(not self._is_game_over)
         return True
