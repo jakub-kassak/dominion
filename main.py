@@ -17,11 +17,12 @@ def print_gam_state(state: GameState):
     print("turnStatus: {}\npoints: {}\nturn: {}".format(state.status, state.points, state.turn))
 
 
-def parse_attributes(command: List[str]) -> List[int]:
+def parse_arguments(command: List[str], sort=False) -> List[int]:
     try:
-        att: List[int] = [int(s) for s in command[1:]]
-        att.sort(reverse=True)
-        return att
+        arg: List[int] = [int(s) for s in command[1:]]
+        if sort:
+            arg.sort(reverse=True)
+        return arg
     except ValueError:
         return [-1]
 
@@ -42,11 +43,13 @@ def main():
     state = domionion.create_game_state()
     while True:
         command = input(">>> ").split()
+        if len(command) < 1:
+            continue
         if command[0] == "play":
-            for val in parse_attributes(command):
+            for val in parse_arguments(command, True):
                 state = handle_state(state, domionion.playCard(val), command[0], val)
         elif command[0] == "buy":
-            for val in parse_attributes(command):
+            for val in parse_arguments(command):
                 state = handle_state(state, domionion.buyCard(val), command[0], val)
         elif command[0] == "end-play":
             state = handle_state(state, domionion.endPlayCardPhase(), command[0])
