@@ -10,17 +10,17 @@ class FakeCard(CardInterface):
         self._cardType = cardType
 
     @property
-    def cardType(self):
+    def cardType(self) -> GameCardType:
         return self._cardType
 
 
 class TestDiscardPile(TestCase):
 
-    def setUp(self):
+    def setUp(self) -> None:
         self.discard_pile: PileInterface = DiscardPile()
         self.discard_pile.put_into([FakeCard(GAME_CARD_TYPE_ESTATE), FakeCard(GAME_CARD_TYPE_COPPER)])
 
-    def test_put_into(self):
+    def test_put_into(self) -> None:
         self.discard_pile.put_into([FakeCard(GAME_CARD_TYPE_ESTATE)])
         self.assertEqual(3, len(self.discard_pile.get_all()))
         self.discard_pile.put_into([FakeCard(GAME_CARD_TYPE_ESTATE)])
