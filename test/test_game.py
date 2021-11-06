@@ -59,6 +59,3 @@ class TestGame(TestCase):
         self.assert_end_turn(result=True, is_game_over=False)
         self.assert_end_turn(result=True, is_game_over=True)
         self.assert_end_turn(result=False, is_game_over=True)
-
-    def test_evaluate_points(self) -> None:
-        pass

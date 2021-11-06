@@ -74,16 +74,6 @@ class Game(GameInterface):
     def turn_status(self) -> TurnStatus:
         return self._turn_status
 
-    def evaluate_points(self) -> Optional[int]:
-        if self._is_game_over:
-            self._player.hand.draw(999999999)
-            cards: List[CardInterface] = self._player.hand.get_all()
-            points: int = 0
-            for card in cards:
-                points += card.cardType.points
-            return points
-        return None
-
     def play_card(self, idx: int) -> bool:
         if not self._is_game_over and self._phase == Phase.ACTION:
             return self._turn.play_card(idx)
