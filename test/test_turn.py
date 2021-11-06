@@ -69,9 +69,9 @@ class TestTurn(TestCase):
         if is_action and result:
             self.assert_status(actions - 1, buys, cards, coins)
         elif is_treasure and result:
-            self.assert_status(actions, buys, cards, coins + 1)
+            self.assert_status(actions, buys, 0, coins + 1)
         else:
-            self.assert_status(actions, buys, cards, coins)
+            self.assert_status(actions, buys, 0, coins)
 
     def test_play_card(self):
         self.assert_new_turn_true(cards=5)
