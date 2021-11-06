@@ -9,3 +9,5 @@ SimpleDominion.py a Main.py nie sú testované, neviem, či to treba.
 Main.py - v prvom ťahu vypíše incorrect move po print alebo aj pri incorrect move.
 Main.py - zišiel by sa nejaký úvodný text alebo nejaký help príkaz aby mohol hráč hrať bez toho aby sa pozrel do kódu.
 Ostatné je podľa mňa OK.
+
+Nová poznámka (6.11 13:24) - main.py - nenapísanie žiadneho príkazu (prázdny input) spôsobí chybu IndexError: list index out of range.
