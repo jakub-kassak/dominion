@@ -41,6 +41,8 @@ class TestGame(TestCase):
     def test_buy_card(self) -> None:
         self.game = self.create_game()
         self.assert_buy_card(result=False, return_value=True)
+        self.assert_buy_card(result=False, return_value=True, n=-1)
+        self.assert_buy_card(result=False, return_value=True, n=1)
         self.assertTrue(self.game.end_play_card_phase())
         self.assert_buy_card(result=True, return_value=True)
 
