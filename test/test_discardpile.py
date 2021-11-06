@@ -25,7 +25,7 @@ class TestDiscardPile(TestCase):
         self.assertEqual(3, len(self.discard_pile.get_all()))
         self.discard_pile.put_into([FakeCard(GAME_CARD_TYPE_ESTATE)])
         self.assertEqual(GAME_CARD_TYPE_ESTATE, self.discard_pile.get_all()[0].cardType)
-        cards = [FakeCard(GAME_CARD_TYPE_ESTATE), FakeCard(GAME_CARD_TYPE_COPPER),
+        cards: List[CardInterface] = [FakeCard(GAME_CARD_TYPE_ESTATE), FakeCard(GAME_CARD_TYPE_COPPER),
                  FakeCard(GAME_CARD_TYPE_FESTIVAL), FakeCard(GAME_CARD_TYPE_MARKET),
                  FakeCard(GAME_CARD_TYPE_SMITHY), FakeCard(GAME_CARD_TYPE_LABORATORY),
                  FakeCard(GAME_CARD_TYPE_VILLAGE), FakeCard(GAME_CARD_TYPE_DUCHY)]
