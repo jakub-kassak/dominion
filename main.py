@@ -17,33 +17,48 @@ def print_gam_state(state: GameState):
     print("turnStatus: {}\npoints: {}\nturn: {}".format(state.status, state.points, state.turn))
 
 
+def parse_attributes(command: List[str]) -> List[int]:
+    try:
+        att: List[int] = [int(s) for s in command[1:]]
+        att.sort(reverse=True)
+        return att
+    except ValueError:
+        pass
+
+
+def handle_state(state: GameState, new_state: Optional[GameState], command: str, attribute: Optional[int] = None):
+    if new_state:
+        return new_state
+    else:
+        if attribute is None:
+            print("incorrect move: {}".format(command))
+        else:
+            print("incorrect move: {} {}".format(command, attribute))
+        return state
+
+
 def main():
     domionion: SimpleDominionInterface = SimpleDominion()
-    state: GameState = domionion.create_game_state()
-    new_state: Optional[GameState] = None
+    state = domionion.create_game_state()
     while True:
-        command = input(">>").split()
+        command = input(">>> ").split()
         if command[0] == "play":
-            idx: List[int] = [int(command[i]) - i + 1 for i in range(1, len(command))]
-            for val in idx:
-                new_state = domionion.playCard(val)
+            for val in parse_attributes(command):
+                state = handle_state(state, domionion.playCard(val), command[0], val)
         elif command[0] == "buy":
-            idx: List[int] = [int(command[i]) - i + 1 for i in range(1, len(command))]
-            for val in idx:
-                new_state = domionion.buyCard(val)
+            for val in parse_attributes(command):
+                state = handle_state(state, domionion.buyCard(val), command[0], val)
         elif command[0] == "end-play":
-            new_state = domionion.endPlayCardPhase()
+            state = handle_state(state, domionion.endPlayCardPhase(), command[0])
         elif command[0] == "end-turn":
-            new_state = domionion.endTurn()
+            state = handle_state(state, domionion.endTurn(), command[0])
         elif command[0] == "print":
             print_gam_state(state)
+        elif command[0] == "quit":
+            if input("confirm (yes): ") == "yes":
+                break
         else:
             print("incorrect command")
-
-        if new_state:
-            state = new_state
-        else:
-            print("incorrect move")
 
 
 if __name__ == '__main__':
