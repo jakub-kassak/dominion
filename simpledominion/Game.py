@@ -84,7 +84,7 @@ class Game(GameInterface):
         return True
 
     def buy_card(self, idx: int) -> bool:
-        if self._phase == Phase.BUY:
+        if self._phase == Phase.BUY and 0 <= idx < len(self._buy_decks) and not self._is_game_over:
             return self._turn.buy_card(self._buy_decks[idx])
         return False
 
