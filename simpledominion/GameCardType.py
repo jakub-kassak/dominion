@@ -17,7 +17,7 @@ class GameCardType:
 
 GAME_CARD_TYPE_ESTATE:      GameCardType = GameCardType(0, 0, 0, 0, 1, 2, False, False, "Estate", "+1 Point")
 GAME_CARD_TYPE_DUCHY:       GameCardType = GameCardType(0, 0, 0, 0, 3, 5, False, False, "Duchy", "+3 Point")
-GAME_CARD_TYPE_PROVINCE:    GameCardType = GameCardType(0, 0, 0, 0, 6, 8, False, False, "Province", "+3 Point")
+GAME_CARD_TYPE_PROVINCE:    GameCardType = GameCardType(0, 0, 0, 0, 6, 8, False, False, "Province", "+6 Point")
 GAME_CARD_TYPE_COPPER:      GameCardType = GameCardType(0, 0, 0, 1, 0, 0, False, True, "Copper", "+1 Coin")
 GAME_CARD_TYPE_SILVER:      GameCardType = GameCardType(0, 0, 0, 2, 0, 3, False, True, "Silver", "+2 Coin")
 GAME_CARD_TYPE_GOLD:        GameCardType = GameCardType(0, 0, 0, 3, 0, 6, False, True, "Gold", "+3 Coin")
