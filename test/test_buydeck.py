@@ -1,7 +1,8 @@
+from typing import Optional
 from unittest import TestCase
 from simpledominion.BuyDeck import BuyDeck, BuyDeckInterface
 from simpledominion.CardInterface import CardInterface
-from simpledominion.GameCardType import GAME_CARD_TYPE_COPPER, GAME_CARD_TYPE_FESTIVAL
+from simpledominion.GameCardType import GAME_CARD_TYPE_COPPER, GAME_CARD_TYPE_FESTIVAL, GameCardType
 
 
 class TestBuyDeck(TestCase):
@@ -20,6 +21,10 @@ class TestBuyDeck(TestCase):
         self.buy_deck1.buy()
         self.assertTrue(self.buy_deck1.is_empty())
         for i in range(self.deck2_size):
-            self.assertEqual(GAME_CARD_TYPE_FESTIVAL, self.buy_deck2.buy().cardType)
+            card: Optional[CardInterface] = self.buy_deck2.buy()
+            self.assertIsNotNone(card)
+            if card:
+                c_type: GameCardType = card.cardType
+                self.assertEqual(GAME_CARD_TYPE_FESTIVAL, c_type)
         self.assertIsNone(self.buy_deck1.buy())
         self.assertIsNone(self.buy_deck2.buy())
