@@ -44,6 +44,7 @@ class Turn(TurnInterface):
                 card.evaluate(self._status)
                 self._player.play_pile.put_into([card])
                 self._player.hand.draw(self._status.cards)
+                self._status.cards = 0
                 return True
         return False
 
