@@ -23,7 +23,7 @@ def parse_attributes(command: List[str]) -> List[int]:
         att.sort(reverse=True)
         return att
     except ValueError:
-        pass
+        return [-1]
 
 
 def handle_state(state: GameState, new_state: Optional[GameState], command: str, attribute: Optional[int] = None):
